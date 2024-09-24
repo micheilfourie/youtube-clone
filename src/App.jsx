@@ -1,12 +1,16 @@
 import Navbar from './components/Navbar.jsx'
+import Sidebar from './components/Sidebar.jsx'
 
 function App() {
   return (
     <main>
       <Navbar />
-      <section id='home'>
+      <div className='pt-[60px] h-full'>
+        <Sidebar />
+        <section id='home'>
 
-      </section>
+        </section>
+      </div>
     </main>
   )
 }
