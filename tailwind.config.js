@@ -6,14 +6,31 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
+      },
       colors: {
         white: "#FFFFFF",
         grey: "#232322",
+        greyAlt: "#313131",
         black: "#0F0E0E",
         red: "#FE0100"
       },
+      keyframes: {
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        }
+      },
+      animation: {
+        'gradient': 'gradient 2s linear infinite',
+      }
     },
-  },
-  plugins: [],
+    plugins: [],
+  }
 }
-

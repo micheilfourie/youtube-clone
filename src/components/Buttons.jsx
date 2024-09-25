@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faMicrophone, faVideo, faBell, faCircleUser, faInfo, faHouse, faClapperboard, faUserGroup, faAddressBook } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMicrophone, faVideo, faBell, faCircleUser, faInfo, faHouse, faClapperboard, faUserGroup, faAddressBook, faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-const Buttons = ({ type }) => {
+const Buttons = ({ type, clearText }) => {
 
     switch (type) {
         case 'hamburger':
@@ -12,7 +12,7 @@ const Buttons = ({ type }) => {
             )
         case 'voice':
             return (
-                <button className='flex justify-center items-center p-4 bg-grey rounded-full text-xl h-12 w-12 ml-5 hover:bg-[#313131] transition-all'>
+                <button className='flex justify-center items-center p-4 bg-grey rounded-full text-xl h-12 w-12 ml-5 hover:bg-greyAlt transition-all'>
                     <FontAwesomeIcon icon={faMicrophone} className="object-cover" />
                 </button>
             )
@@ -30,7 +30,7 @@ const Buttons = ({ type }) => {
             )
         case 'profile':
             return (
-                <button className='flex justify-center items-center p-4 rounded-full text-4xl h-12 w-12 mx-1'>
+                <button className='flex justify-center items-center p-4 rounded-full text-4xl h-12 w-12 mx-1 hover:scale-[1.2] transition-all'>
                     <FontAwesomeIcon icon={faCircleUser} className="object-cover" />
                 </button>
             )
@@ -68,6 +68,20 @@ const Buttons = ({ type }) => {
                         <FontAwesomeIcon icon={faAddressBook} className="object-cover" />
                     </div>
                     <span className="text-[12px] font-semibold">You</span>
+                </button>
+            )
+        case 'clear':
+            return (
+                <button
+                    onClick={clearText}
+                    className='flex justify-center items-center rounded-full text-xl h-10 w-10 hover:bg-grey transition-all' >
+                    <FontAwesomeIcon icon={faXmark} className="object-cover" />
+                </button>
+            )
+        case 'submit':
+            return (
+                <button className="text-center text-[17px] bg-grey rounded-r-full p-2.5 pr-6 pl-5">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             )
         default:
