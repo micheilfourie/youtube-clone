@@ -9,6 +9,7 @@ function App() {
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const [showTooltip, setShowTooltip] = useState("");
 
   useEffect(() => {
     function handleResize() {
@@ -24,19 +25,19 @@ function App() {
     };
   }, []);
 
+  const handleTooltipShown = (text) => {
+    setShowTooltip(text);
+  };
+
   return (
     <main>
-      <Navbar windowSize={windowSize} />
-      <div className='pt-[60px] h-full'>
-        <Sidebar />
-        <div className='ml-[80px]'>
-          <section id='home' className='flex justify-center items-start py-6 pr-4 pl-4'>
-            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8'>
-              {Array(50).fill(null).map((_, index) => <VideoCard key={index} />)}
-            </div>
-          </section>
+      <Navbar windowSize={windowSize} showTooltip={showTooltip} handleTooltipShown={handleTooltipShown} />
+      <Sidebar />
+      <section className='flex justify-center items-start py-6 px-8 ml-[80px] mt-[72px]'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8'>
+          {Array(50).fill(null).map((_, index) => <VideoCard key={index} />)}
         </div>
-      </div>
+      </section>
     </main>
   )
 }

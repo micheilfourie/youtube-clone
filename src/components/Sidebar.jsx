@@ -2,8 +2,8 @@ import Buttons from "./Buttons"
 
 const Sidebar = () => {
     return (
-        <nav className="fixed w-[80px] h-full flex justify-center items-start text-center text-[12px] font-semibold bg-black">
-            <ul className="pt-4">
+        <nav className="fixed top-0 w-[80px] h-full flex justify-center items-start bg-black z-40">
+            <ul className="pt-20">
                 <li>
                     <Buttons type='home' />
                 </li>

@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faMicrophone, faVideo, faBell, faCircleUser, faInfo, faHouse, faClapperboard, faUserGroup, faAddressBook, faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import Tooltip from "./Tooltip";
 
-const Buttons = ({ type, clearText }) => {
+const Buttons = ({ type, clearText, handleTooltipShown }) => {
 
     switch (type) {
         case 'hamburger':
@@ -80,9 +81,12 @@ const Buttons = ({ type, clearText }) => {
             )
         case 'submit':
             return (
-                <button className="text-center text-[17px] bg-grey rounded-r-full p-2.5 pr-6 pl-5">
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
+                <div className="relative">
+                    <button className="text-center text-[17px] bg-grey rounded-r-full h-[46px] pr-6 pl-5">
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                    <Tooltip />
+                </div>
             )
         default:
             return (
