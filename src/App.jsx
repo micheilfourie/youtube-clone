@@ -38,12 +38,14 @@ function App() {
 
   return (
     <main>
+
       {modalOpen ? (
         <div>
           <BackgroundFilter handleModalClose={handleModalClose} />
           <Modals modalType={modalType} handleModalClose={handleModalClose} />
         </div>
       ) : null}
+
       <Navbar windowSize={windowSize} handleModalDisplay={handleModalDisplay} />
       <Sidebar />
       <section className='flex justify-center items-start py-6 px-8 ml-[80px] mt-[72px]'>

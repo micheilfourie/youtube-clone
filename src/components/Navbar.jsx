@@ -34,9 +34,9 @@ const Navbar = ({ windowSize, handleModalDisplay }) => {
             <div className="flex flex-row items-center">
                 {windowSize.width > 768 ? (
                     <>
-                        <Buttons type="create" />
-                        <Buttons type="notification" />
-                        <Buttons type="profile" />
+                        <Buttons type="create" handleModalDisplay={handleModalDisplay} />
+                        <Buttons type="notification" handleModalDisplay={handleModalDisplay} />
+                        <Buttons type="profile" handleModalDisplay={handleModalDisplay} />
                     </>
                 ) : (
                     null

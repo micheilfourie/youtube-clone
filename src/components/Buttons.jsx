@@ -24,14 +24,16 @@ const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose }) => {
         case 'voiceModal':
             return (
                 <button
-                    className='flex justify-center items-center p-4 bg-greyAlt rounded-full text-4xl h-[90px] w-[90px] hover:bg-[#3a3a3a]'>
+                    className='flex justify-center items-center p-4 bg-greyAlt rounded-full border-[1px] border-highlight shadow-md text-4xl h-[100px] w-[100px] hover:bg-highlight'>
                     <FontAwesomeIcon icon={faMicrophone} className="object-cover" />
                 </button>
             )
         case 'create':
             return (
                 <Tooltip text={"Create"} direction={"bottom"}>
-                    <button className='flex justify-center items-center p-4 rounded-full text-lg h-12 w-12 hover:bg-grey mx-1'>
+                    <button
+                        onClick={() => handleModalDisplay("create")}
+                        className='flex justify-center items-center p-4 rounded-full text-lg h-12 w-12 hover:bg-grey mx-1'>
                         <FontAwesomeIcon icon={faVideo} className="object-cover" />
                     </button>
                 </Tooltip>
@@ -39,14 +41,18 @@ const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose }) => {
         case 'notification':
             return (
                 <Tooltip text={"Notifications"} direction={"bottom"}>
-                    <button className='flex justify-center items-center p-4 rounded-full text-lg h-12 w-12 hover:bg-grey mx-1'>
+                    <button
+                        onClick={() => handleModalDisplay("notification")}
+                        className='flex justify-center items-center p-4 rounded-full text-lg h-12 w-12 hover:bg-grey mx-1'>
                         <FontAwesomeIcon icon={faBell} className="object-cover" />
                     </button>
                 </Tooltip>
             )
         case 'profile':
             return (
-                <button className='flex justify-center items-center p-4 rounded-full text-[44px] h-12 w-12 mx-1'>
+                <button
+                    onClick={() => handleModalDisplay("profile")}
+                    className='flex justify-center items-center p-4 rounded-full text-[44px] h-12 w-12 mx-1'>
                     <FontAwesomeIcon icon={faCircleUser} className="object-cover" />
                 </button>
             )
