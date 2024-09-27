@@ -1,8 +1,8 @@
 import SearchBar from "./SearchBar.jsx"
 import Buttons from "./Buttons.jsx"
 
-const Navbar = ({ windowSize, showTooltip, handleTooltipShown }) => (
-    <nav className={`fixed top-0 w-full flex flex-row ${windowSize.width < 768 ? "justify-center" : ""} justify-between items-center px-4 py-3 bg-black z-50`}>
+const Navbar = ({ windowSize, handleModalDisplay }) => (
+    <nav className={`fixed top-0 w-full flex flex-row ${windowSize.width < 768 ? "justify-center" : ""} justify-between items-center px-4 py-3 bg-black z-30`}>
 
         <div className="flex flex-row items-center mr-4">
             <Buttons type="hamburger" />
@@ -17,9 +17,12 @@ const Navbar = ({ windowSize, showTooltip, handleTooltipShown }) => (
         </div>
 
         <div className={`flex flex-row items-center ${windowSize.width < 768 ? "w-full" : "w-[50%]"} max-w-[700px]`}>
-            <SearchBar showTooltip={showTooltip} handleTooltipShown={handleTooltipShown} />
+            <SearchBar />
             {windowSize.width > 768 ? (
-                <Buttons type="voice" />
+                <div className="ml-5">
+                    <Buttons type="voice" handleModalDisplay={handleModalDisplay} />
+                </div>
+
             ) : (
                 null
             )}

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faMicrophone, faVideo, faBell, faCircleUser, faInfo, faHouse, faClapperboard, faUserGroup, faAddressBook, faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Tooltip from "./Tooltip";
 
-const Buttons = ({ type, clearText, handleTooltipShown }) => {
+const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose }) => {
 
     switch (type) {
         case 'hamburger':
@@ -13,21 +13,36 @@ const Buttons = ({ type, clearText, handleTooltipShown }) => {
             )
         case 'voice':
             return (
-                <button className='flex justify-center items-center p-4 bg-grey rounded-full text-xl h-12 w-12 ml-5 hover:bg-greyAlt'>
+                <Tooltip text="Search With Voice" direction={"bottom"}>
+                    <button
+                        onClick={() => handleModalDisplay("voice")}
+                        className='flex justify-center items-center p-4 bg-grey rounded-full text-xl h-12 w-12 hover:bg-greyAlt'>
+                        <FontAwesomeIcon icon={faMicrophone} className="object-cover" />
+                    </button>
+                </Tooltip>
+            )
+        case 'voiceModal':
+            return (
+                <button
+                    className='flex justify-center items-center p-4 bg-greyAlt rounded-full text-4xl h-[90px] w-[90px] hover:bg-[#3a3a3a]'>
                     <FontAwesomeIcon icon={faMicrophone} className="object-cover" />
                 </button>
             )
         case 'create':
             return (
-                <button className='flex justify-center items-center p-4 rounded-full text-lg h-12 w-12 hover:bg-grey mx-1'>
-                    <FontAwesomeIcon icon={faVideo} className="object-cover" />
-                </button>
+                <Tooltip text={"Create"} direction={"bottom"}>
+                    <button className='flex justify-center items-center p-4 rounded-full text-lg h-12 w-12 hover:bg-grey mx-1'>
+                        <FontAwesomeIcon icon={faVideo} className="object-cover" />
+                    </button>
+                </Tooltip>
             )
         case 'notification':
             return (
-                <button className='flex justify-center items-center p-4 rounded-full text-lg h-12 w-12 hover:bg-grey mx-1'>
-                    <FontAwesomeIcon icon={faBell} className="object-cover" />
-                </button>
+                <Tooltip text={"Notifications"} direction={"bottom"}>
+                    <button className='flex justify-center items-center p-4 rounded-full text-lg h-12 w-12 hover:bg-grey mx-1'>
+                        <FontAwesomeIcon icon={faBell} className="object-cover" />
+                    </button>
+                </Tooltip>
             )
         case 'profile':
             return (
@@ -79,14 +94,21 @@ const Buttons = ({ type, clearText, handleTooltipShown }) => {
                     <FontAwesomeIcon icon={faXmark} className="object-cover" />
                 </button>
             )
+        case 'clearModal':
+            return (
+                <button
+                    onClick={handleModalClose}
+                    className='flex justify-center items-center rounded-full text-2xl h-10 w-10 hover:text-[white]' >
+                    <FontAwesomeIcon icon={faXmark} className="object-cover" />
+                </button>
+            )
         case 'submit':
             return (
-                <div className="relative">
-                    <button className="text-center text-[17px] bg-grey rounded-r-full h-[46px] pr-6 pl-5">
+                <Tooltip text={"Search"} direction={"bottom"}>
+                    <button className="text-center text-[17px] bg-grey rounded-r-full h-[46px] pr-6 pl-5 hover:bg-greyAlt ">
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
-                    <Tooltip />
-                </div>
+                </Tooltip>
             )
         default:
             return (

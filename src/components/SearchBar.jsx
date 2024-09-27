@@ -3,7 +3,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import Buttons from "./Buttons"
 import { useState } from "react"
 
-const SearchBar = ({ tooltip, handleTooltipShown }) => {
+const SearchBar = () => {
 
     const [inFocus, setInFocus] = useState(false)
     const [text, setText] = useState("")
@@ -51,7 +51,7 @@ const SearchBar = ({ tooltip, handleTooltipShown }) => {
                 </div>
             </div>
 
-            <Buttons type='submit' tooltip={tooltip} handleTooltipShown={handleTooltipShown} />
+            <Buttons type='submit' />
 
         </form>
 

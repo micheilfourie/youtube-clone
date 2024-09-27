@@ -18,6 +18,7 @@ export default {
         grey: "#232322",
         greyAlt: "#313131",
         black: "#0F0E0E",
+        blackAlt: "#222222",
         red: "#FE0100"
       },
       keyframes: {
