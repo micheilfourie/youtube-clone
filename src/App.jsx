@@ -20,33 +20,40 @@ function App() {
         height: window.innerHeight,
       });
     }
-
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
+  useEffect(() => {
+    if (windowSize.width < 768) {
+      handleModalClose();
+    }
+  }, [windowSize].width);
+
   const handleModalDisplay = (type) => {
-    type ? (setModalOpen(true), setModalType(type)) : (setModalOpen(false), setModalType(""));
+    setModalOpen(true)
+    setModalType(type)
+    document.body.classList.add("overflow-hidden", "mr-[0.7rem]")
   }
 
   const handleModalClose = () => {
-    setModalOpen(false);
-    setModalType("");
+    setModalOpen(false)
+    setModalType("")
+    document.body.classList.remove("overflow-hidden", "mr-[0.7rem]")
   }
 
   return (
     <main>
-
-      {modalOpen ? (
+      {modalOpen && windowSize.width >= 768 ? (
         <div>
           <BackgroundFilter handleModalClose={handleModalClose} />
           <Modals modalType={modalType} handleModalClose={handleModalClose} />
         </div>
       ) : null}
 
-      <Navbar windowSize={windowSize} handleModalDisplay={handleModalDisplay} />
+      <Navbar windowSize={windowSize} handleModalDisplay={handleModalDisplay} modalOpen={modalOpen} />
       <Sidebar />
       <section className='flex justify-center items-start py-6 px-8 ml-[80px] mt-[72px]'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8'>
