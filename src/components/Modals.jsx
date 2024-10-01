@@ -1,7 +1,7 @@
 import Buttons from "./Buttons"
 import ProfileButtons from "./ProfileButtons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleUser, faUpload, faPenToSquare, faSatelliteDish } from "@fortawesome/free-solid-svg-icons"
+import { faCircleUser, faUpload, faPenToSquare, faSatelliteDish, faGear } from "@fortawesome/free-solid-svg-icons"
 
 const Modals = ({ modalType, handleModalClose }) => {
 
@@ -22,19 +22,19 @@ const Modals = ({ modalType, handleModalClose }) => {
         case 'create':
             return (
                 <div className="fixed flex flex-col justify-center items-center h-[180px] top-[75px] right-[130px] rounded-2xl z-50">
-                    <button className="flex justify-start items-center px-8 py-4 hover:bg-grey bg-greyAlt w-full rounded-t-2xl">
+                    <button className="flex justify-start items-center px-6 py-4 hover:bg-grey bg-greyAlt w-full rounded-t-2xl">
                         <div className="text-xl mr-4">
                             <FontAwesomeIcon icon={faUpload} />
                         </div>
                         Upload Video
                     </button>
-                    <button className="flex justify-start items-center px-8 py-4 hover:bg-grey bg-greyAlt w-full border-y-[1px] border-y-grey">
+                    <button className="flex justify-start items-center px-6 py-4 hover:bg-grey bg-greyAlt w-full border-y-[1px] border-y-grey">
                         <div className=" text-xl mr-4">
                             <FontAwesomeIcon icon={faPenToSquare} />
                         </div>
                         Create Post
                     </button>
-                    <button className="flex justify-start items-center px-8 py-4 hover:bg-grey bg-greyAlt w-full rounded-b-2xl">
+                    <button className="flex justify-start items-center px-6 py-4 hover:bg-grey bg-greyAlt w-full rounded-b-2xl">
                         <div className=" text-2xl mr-4">
                             <FontAwesomeIcon icon={faSatelliteDish} />
                         </div>
@@ -45,9 +45,15 @@ const Modals = ({ modalType, handleModalClose }) => {
         case 'notification':
             return (
                 <div className="fixed flex flex-col justify-start items-center min-h-[150px] h-[800px] max-h-[calc(100vh-100px)] bg-grey w-[500px] top-[72px] right-[80px] rounded-2xl z-50 overflow-hidden">
-                    <div className="text-start w-full border-b-[1px] border-grey">
-                        <h1 className="px-8 py-5 w-full text-start text-[19px] ">Notifications</h1>
+
+                    <div className="flex justify-between items-center text-start w-full border-b-[1px] border-grey pr-4 pl-8 py-4">
+                        <h1 className="w-full text-start text-[19px] ">Notifications</h1>
+                        <button
+                            className='flex justify-center items-center rounded-full aspect-square text-2xl h-12 w-12 hover:bg-highlight' >
+                            <FontAwesomeIcon icon={faGear} className="object-cover" />
+                        </button>
                     </div>
+
                     <div className="overflow-auto w-full">
                         {Array(30).fill(null).map((_, index) => (
                             <button key={index} className="flex justify-start items-center p-4 px-6 hover:bg-grey bg-greyAlt w-full border-b-[1px] border-grey">

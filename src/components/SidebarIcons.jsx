@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faClapperboard, faUserGroup, faAddressBook, faCircleUser, faChevronDown, faChevronRight, faUser, faClockRotateLeft, faListUl, faVideo, faClock, faThumbsUp, faArrowTrendUp, faMusic, faDice, faNewspaper, faBaseball, faPodcast, faGear, faFlag, faCircleInfo, faRss } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faClapperboard, faUserGroup, faAddressBook, faCircleUser, faChevronDown, faChevronRight, faUser, faClockRotateLeft, faListUl, faVideo, faClock, faThumbsUp, faArrowTrendUp, faChevronUp, faMusic, faDice, faNewspaper, faBaseball, faPodcast, faGear, faFlag, faCircleInfo, faRss } from '@fortawesome/free-solid-svg-icons'
 
 const SidebarIcons = ({ type }) => {
 
@@ -39,6 +39,12 @@ const SidebarIcons = ({ type }) => {
             return (
                 <div className='flex justify-center items-center text-xl w-12'>
                     <FontAwesomeIcon icon={faChevronDown} className="object-cover" />
+                </div>
+            )
+        case 'up':
+            return (
+                <div className='flex justify-center items-center text-lg w-12'>
+                    <FontAwesomeIcon icon={faChevronUp} className="object-cover" />
                 </div>
             )
         case 'right':

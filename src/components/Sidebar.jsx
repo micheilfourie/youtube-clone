@@ -1,13 +1,19 @@
 import SidebarIcons from "./SidebarIcons"
-import SidebarButtons from "./SidebarIcons"
+import { useState } from "react"
 
 const Sidebar = ({ expandSidebar }) => {
+
+    const [subsExpanded, setSubsExpanded] = useState(false)
+
+    const toggleSubsExpanded = () => {
+        setSubsExpanded(!subsExpanded)
+    }
 
     return (
 
         !expandSidebar ? (
 
-            <nav className="fixed top-0 w-[80px] h-[100vh] flex justify-center items-start bg-black z-20 mt-[72px]">
+            <nav className="fixed top-0 w-[80px] h-[100vh] flex justify-center items-start bg-black z-20 pt-[72px]">
                 <ul className="w-full mx-1">
                     <li className="flex flex-col justify-center items-center mb-2 p-3 hover:cursor-pointer hover:bg-greyAlt w-full rounded-r-xl">
                         <SidebarIcons type='home' />
@@ -30,9 +36,9 @@ const Sidebar = ({ expandSidebar }) => {
 
         ) : (
 
-            <nav className="fixed top-0 w-[250px] h-[100vh] flex justify-start items-start bg-black z-20 overflow-auto mt-[72px]">
+            <nav className="fixed top-0 w-[250px] h-[100vh] flex justify-start items-start bg-black z-20 overflow-auto pt-[72px]">
 
-                <ul className="w-full mx-1 pb-20">
+                <ul className="w-full mx-1 pb-4">
 
                     <hr className="border-blackAlt w-full mb-2" />
 
@@ -92,17 +98,26 @@ const Sidebar = ({ expandSidebar }) => {
                         <span className="text-[18px] font-semibold ml-2">Subscriptions</span>
                     </li>
 
-                    {Array(5).fill(null).map((_, index) => (
+                    {Array(!subsExpanded ? 5 : 20).fill(null).map((_, index) => (
                         <li key={index} className="flex justify-start items-center  pl-3 py-2.5 hover:cursor-pointer hover:bg-greyAlt w-full rounded-xl">
                             <SidebarIcons type='profile' />
                             <span className="text-[16px] ml-2">Creator Name</span>
                         </li>
                     ))}
 
-                    <li className="flex justify-start items-center  pl-3 py-2.5 hover:cursor-pointer hover:bg-greyAlt w-full rounded-xl">
-                        <SidebarIcons type='down' />
-                        <span className="text-[16px] ml-2">Show More</span>
-                    </li>
+                    {!subsExpanded ? (
+                        <li onClick={toggleSubsExpanded} className="flex justify-start items-center  pl-3 py-2.5 hover:cursor-pointer hover:bg-greyAlt w-full rounded-xl">
+                            <SidebarIcons type='down' />
+                            <span className="text-[16px] ml-2">Show More</span>
+                        </li>
+                    ) : (
+                        <li onClick={toggleSubsExpanded} className="flex justify-start items-center  pl-3 py-2.5 hover:cursor-pointer hover:bg-greyAlt w-full rounded-xl">
+                            <SidebarIcons type='up' />
+                            <span className="text-[16px] ml-2">Show Less</span>
+                        </li>
+                    )}
+
+
 
                     <hr className="border-blackAlt w-full my-2" />
 
