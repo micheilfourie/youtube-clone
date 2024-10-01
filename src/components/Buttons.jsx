@@ -1,25 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faMicrophone, faVideo, faBell, faCircleUser, faInfo, faHouse, faClapperboard, faUserGroup, faAddressBook, faXmark, faMagnifyingGlass, faG, faRepeat, faArrowRightFromBracket, faPhotoFilm, faFileInvoiceDollar, faDatabase, faBorderTopLeft, faToggleOff, faCompass, faKeyboard, faGear, faCircleQuestion, faRss, faLanguage } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMicrophone, faVideo, faBell, faCircleUser, faInfo, faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Tooltip from "./Tooltip";
 
-const profileModalIcons = {
-    1: faG,
-    2: faRepeat,
-    3: faArrowRightFromBracket,
-    4: faPhotoFilm,
-    5: faFileInvoiceDollar,
-    6: faDatabase,
-    7: faBorderTopLeft,
-    8: faLanguage,
-    9: faToggleOff,
-    10: faCompass,
-    11: faKeyboard,
-    12: faGear,
-    13: faCircleQuestion,
-    14: faRss
-};
-
-const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose, profileModalBtnText, iconIndex }) => {
+const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose, handleSidebarExpand }) => {
 
     switch (type) {
 
@@ -27,7 +10,7 @@ const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose, profil
 
         case 'hamburger':
             return (
-                <button className="flex justify-center items-center p-4 rounded-full text-2xl h-12 w-12 hover:bg-grey">
+                <button onClick={handleSidebarExpand} className="flex justify-center items-center p-4 rounded-full text-2xl h-12 w-12 hover:bg-grey">
                     <FontAwesomeIcon icon={faBars} className="object-cover" />
                 </button>
             )
@@ -70,45 +53,6 @@ const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose, profil
                 </button>
             )
 
-        // SideBar Buttons
-
-        case 'home':
-            return (
-                <button className="flex flex-col justify-center items-center hover:bg-grey rounded-lg w-full px-4 pb-4">
-                    <div className='flex justify-center p-4 rounded-full text-lg h-12 w-12 mx-1'>
-                        <FontAwesomeIcon icon={faHouse} className="object-cover" />
-                    </div>
-                    <span className="text-[12px] font-semibold">Home</span>
-                </button>
-            )
-        case 'shorts':
-            return (
-                <button className="flex flex-col justify-center items-center hover:bg-grey rounded-lg w-full px-4 pb-4">
-                    <div className='flex justify-center p-4 rounded-full text-lg h-12 w-12 mx-1'>
-                        <FontAwesomeIcon icon={faClapperboard} className="object-cover" />
-                    </div>
-                    <span className="text-[12px] font-semibold">Shorts</span>
-                </button>
-            )
-        case 'subscriptions':
-            return (
-                <button className="flex flex-col justify-center items-center hover:bg-grey rounded-lg w-full px-4 pb-4">
-                    <div className='flex justify-center p-4 rounded-full text-lg h-12 w-12 mx-1'>
-                        <FontAwesomeIcon icon={faUserGroup} className="object-cover" />
-                    </div>
-                    <span className="text-[12px] font-semibold">Subs</span>
-                </button>
-            )
-        case 'you':
-            return (
-                <button className="flex flex-col justify-center items-center hover:bg-grey rounded-lg w-full pb-4">
-                    <div className='flex justify-center p-4 rounded-full text-lg h-12 w-12 mx-1'>
-                        <FontAwesomeIcon icon={faAddressBook} className="object-cover" />
-                    </div>
-                    <span className="text-[12px] font-semibold">You</span>
-                </button>
-            )
-
         // SearchBar Buttons    
 
         case 'clear':
@@ -134,7 +78,7 @@ const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose, profil
         case 'voiceModal':
             return (
                 <button
-                    className='flex justify-center items-center p-4 bg-greyAlt rounded-full border-[1px] border-highlight shadow-md text-4xl h-[100px] w-[100px] hover:bg-highlight'>
+                    className='flex justify-center items-center p-4 bg-[#292929] rounded-full border-[1px] border-highlight shadow-md text-4xl h-[100px] w-[100px] hover:bg-highlight'>
                     <FontAwesomeIcon icon={faMicrophone} className="object-cover" />
                 </button>
             )
@@ -144,17 +88,6 @@ const Buttons = ({ type, clearText, handleModalDisplay, handleModalClose, profil
                     onClick={handleModalClose}
                     className='flex justify-center items-center rounded-full text-2xl h-10 w-10 hover:text-[white]' >
                     <FontAwesomeIcon icon={faXmark} className="object-cover" />
-                </button>
-            )
-
-        case 'profileModal':
-            return (
-                <button className="flex justify-start items-center w-full text-start hover:bg-grey py-3.5 px-6">
-                    <div className="flex justify-center items-center mr-4 text-2xl w-8 h-8">
-                        <FontAwesomeIcon icon={profileModalIcons[iconIndex]} />
-                        {console.log(iconIndex)}
-                    </div>
-                    {profileModalBtnText}
                 </button>
             )
 

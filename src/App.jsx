@@ -6,6 +6,7 @@ import BackgroundFilter from './components/BackgroundFilter.jsx';
 import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [expandSidebar, setExpandSidebar] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const [windowSize, setWindowSize] = useState({
@@ -44,6 +45,10 @@ function App() {
     document.body.classList.remove("overflow-hidden", "mr-[0.7rem]")
   }
 
+  const handleSidebarExpand = () => {
+    setExpandSidebar(!expandSidebar)
+  }
+
   return (
     <main>
       {modalOpen && windowSize.width >= 768 ? (
@@ -53,9 +58,9 @@ function App() {
         </div>
       ) : null}
 
-      <Navbar windowSize={windowSize} handleModalDisplay={handleModalDisplay} modalOpen={modalOpen} />
-      <Sidebar />
-      <section className='flex justify-center items-start py-6 px-8 ml-[80px] mt-[72px]'>
+      <Navbar handleSidebarExpand={handleSidebarExpand} windowSize={windowSize} handleModalDisplay={handleModalDisplay} modalOpen={modalOpen} />
+      <Sidebar expandSidebar={expandSidebar} />
+      <section className='flex justify-center items-start p-4 ml-[80px] mt-[72px]'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8'>
           {Array(50).fill(null).map((_, index) => <VideoCard key={index} />)}
         </div>
